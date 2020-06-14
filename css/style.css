@@ -1,0 +1,549 @@
+/*
+**Autor: Victor de Carvalho Silva
+**Ano2020
+**Site desenvolvido para a disciplina de Desenvolvimento Web no 5° Período em Análise e Desenvolvimento de Sistemas
+**FVC - 2020
+*/
+
+/**** GERAIS DO HTML ****/
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: Roboto, Helvetica, sans-serif;   
+}
+a{
+    text-decoration: none;
+}
+a:hover{
+    color: #999;
+}
+section{
+    padding-top: 50px!important;
+    padding-bottom: 50px!important;
+}
+
+/**** Utilitários ****/
+.text-sm{
+    width: 70%;
+}
+.container{
+    padding: 0 10%;
+}
+.container-lg{
+    padding: 0 5%;
+}
+.center{
+    text-align: center;
+    margin: 0 auto;
+}
+#principal{
+    height: 1000px; 
+}
+.bottom{
+    width: 100%;
+    display: inline-block;
+    position: relative;
+    bottom: 0;
+    padding: 50px 0;
+    background-color: #111;
+    text-align: center;
+    letter-spacing: 3px;
+    transition: all .2s;
+}
+.bottom a{
+    color: #fff;
+}
+.bottom a:hover, a:hover>span{
+    color: #777;
+    cursor: pointer;
+}
+.bottom span{
+    color: #fff;
+    font-weight: bold;
+}
+
+/**** CABEÇALHO SUPERIOR ****/
+.site-header{
+    font-family: Montserrat, Helvetica, sans-serif;   
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: #333;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 1px 1px 10px rgba(0,0,0,.5);
+    position: sticky;
+    top: 0;
+    z-index: 99;
+}
+
+#menu{
+    display: flex;
+}
+#menu a{
+    text-decoration: none;
+    color: white;
+}
+#menu li{
+    padding: 20px 20px;
+    transition: all .2s;
+    list-style: none;
+}
+#menu li:hover{
+    background-color: #444;
+}
+.title{
+    text-align: center;
+    font-size: 22pt;
+    line-height: 100px;
+}
+
+/**** BOTÕES ****/
+.btn{
+    border: none;
+    transition: all .2s;
+    color: white;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.btn-fill{
+    width: 100%;
+}
+.btn:hover{
+    color: white;
+    box-shadow: 1px 1px 10px rgba(0,0,0,.5);
+}
+.btn:focus{
+    outline-style: none;
+}
+.btn-sm{
+    padding: 8px 15px;
+}
+.btn-me{
+    padding: 12px 20px;
+}
+.btn-lg{
+    padding: 17px 30px;
+}
+.btn-blue{
+    background-color: #003D75;
+}
+.btn-blue:hover{
+    background-color: rgb(1, 34, 65);
+}
+.btn-dark{
+    background-color: rgb(8, 12, 17);
+}
+.btn-dark:hover{
+    background-color: #0E161F;
+}
+.btn-white{
+    background-color: white;
+    color: #222!important;
+    box-shadow: 0px 0px 2px rgba(0,0,0,.4);
+}
+.btn-white:hover{
+    background-color: #eee;
+}
+.btn-outline{
+    background-color: transparent;
+    border: solid 2px white;
+}
+.btn-outline:hover{
+    background-color: white;
+    color: black;
+}
+
+.sair{
+    background-color: rgb(211, 56, 56)!important;
+}
+/**** PRINCIPAL ****/
+#slider-principal{
+    width: 100%;
+    height: 100vh;
+    background-image: url('../img/bg.jpg');
+    background-color: #eee;
+    background-blend-mode: luminosity;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    justify-content: space-between;
+    text-align: center;
+    padding: 15% 0!important;
+    max-height: 560px;
+}
+#slider-principal h2{
+    color: white;
+    font-weight: lighter;
+    font-size: 42pt;
+    line-height: 50px;
+    animation: sombraAlternada 3s infinite;
+    margin-bottom: 30px;
+}
+
+/**** Colunas Com Layout Flex****/
+.flex-col{
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.ajust-align{
+    justify-content: space-around;
+    align-content: center;
+}
+.flex-box{
+    min-width: 200px;
+}
+
+/**** Itens ****/
+.box-post{
+    box-shadow: 1px 1px 5px rgba(0,0,0,.2);
+    padding: 10px 20px;
+    max-width: 350px;
+    margin-left: 5px!important;
+    margin-right: 5px!important;
+    margin-bottom: 10px!important;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    transition: all .2s;
+}
+.box-post:hover{
+    color: #000;
+    box-shadow: 1px 1px 15px rgba(0,0,0,.3);
+}
+.box-img{
+    position: relative;
+    max-width: 350px;
+    max-height: 244px;
+    text-align: center;
+    background-color: white; 
+}
+.box-img img{
+    box-shadow: 1px 1px 5px rgba(0,0,0,.2);
+    padding: 10px;
+    width: 350px;
+    flex: 1;
+    text-align: center;
+    transition: all .2s;
+    z-index: 2;
+}
+.box-img:hover img{
+    box-shadow: 1px 1px 20px rgba(0,0,0,.3);
+}
+.box-img:hover img{
+    filter: grayscale(1);
+}
+.box-img figcaption{
+    position: absolute;
+    top: 0;
+    font-size: 22pt;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    transition: all .2s;
+    opacity: 0;
+    text-shadow: 2px 2px 5px black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.box-img:hover figcaption{
+    opacity: 1;
+    color: white;
+    text-shadow: 1px 1px 5px rgba(0,0,0,.9);
+    z-index: 3;
+}
+.box-post img{
+    height: 200px;
+    max-width: 400px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.box-post a{
+    width: 150px;
+}
+
+#servicos .box-post img{
+    width: 50px;
+    height: 50px;
+    margin: auto;
+}
+
+#servicos .box-post p{
+    font-size: 14pt;
+    line-height: 50px
+}
+
+#servicos .box-post{
+    min-width: 220px;
+    text-align: center;
+    padding-top: 30px;
+}
+
+/**** Icone menu mobile ****/
+#menu-icon{
+    letter-spacing: 3px!important;
+    font-size: 15pt!important;
+    transform: rotate(90deg);
+    display: none;
+    color: white;
+    cursor: pointer;
+}
+#menu-icon:hover{
+    color: #ccc;
+}
+
+/**** MODAL ****/
+.bg-modal{
+    background-color: rgba(0,0,0,.7);
+    position: fixed;
+    z-index: 99;
+    width: 100%;
+    height: 100%;
+    display: none
+}
+.modal{
+    display: none;
+    min-height: 300px;
+    min-width: 300px;
+    max-width: 70%;
+    max-height: 500px;
+    right: 0;
+    left: 0;
+    position: absolute;
+    z-index: 100;
+    margin: 0 auto;
+    border-radius: 5px;
+    padding: 20px 30px;
+    background-color: #fff;
+    box-shadow: 1px 1px 30px rgba(0,0,0,.5);
+    text-align: center;
+    animation: showDown .5s;
+    top: 18%;
+}
+.modal-header{
+ 
+}
+.modal-body{
+    padding: 20px 10%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5%;
+}
+.modal-header i{
+    font-size: 18pt;
+    font-weight: bold;
+    float: right;
+}
+.modal-header i:hover{
+    color: red;
+    cursor: pointer;
+}
+.login{
+    width: 400px!important;
+}
+.show{
+    display: block!important;
+}
+.fade{
+    animation: fade 2s;
+}
+.box-text{
+    max-width: 500px;
+    text-align: start;
+}
+/**** Outros ****/
+.show{
+    display: block!important;
+}
+.fade{
+    animation: fade 2s;
+}
+.box-text{
+    max-width: 500px;
+    text-align: start;
+}
+
+.person{
+    width: 140px;
+    height: 140px;
+    border-radius: 100px;
+}
+
+#sobre h4{
+    text-align: center
+}
+#habilidades{
+    max-width: 180px;
+    margin: 0 auto;
+}
+#icons-inline{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#icons-inline img{
+    width: 30px;
+}
+#icons-inline img:hover{
+    transform: scale(1.05);
+    filter: contrast(0.5);
+}
+
+/**** Campos de entrada ****/
+textarea{
+    resize: none;
+    height: 150px;
+}
+input[type="text"], input[type="password"], input[type="number"], input[type="email"], textarea{
+    padding: 8px 10px;
+    border: none;
+    border-bottom: solid 1.5px #ddd;
+    outline: none;
+    margin-bottom: 10px;
+    width: 100%;
+    min-width: 200px;
+    font-size: 12pt;
+    transition: all .2s;
+    color: #444;
+}
+
+input[type="text"]:hover, input[type="password"]:hover, input[type="number"]:hover, input[type="email"]:hover, textarea:hover{
+    border-color: #999;
+    background-color: #f9f9f9;
+}
+
+.newsletter{
+    background-color: black;
+    line-height: 50px;
+}
+.newsletter input{
+    width: 25%;
+    max-width: 300px;
+    min-width: 200px;
+}
+
+.form-contato{
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+textarea.post{
+    resize: vertical;
+    height: 150px;
+}
+
+/*** DASHBOARD ***/
+#dashboard{
+    min-height: 95vh;
+    background-color: #eee;
+    padding: 0 50px;
+    display: block;
+    margin-left: 200px;
+}
+aside{
+    width: 200px;
+    min-height: 100%;
+    background-color: #444;
+    float: left
+}
+aside ul li{
+    width: 100%;
+    padding: 20px 30px;
+    color: white;
+    background-color: #333;
+    transition: all .2s;
+}
+aside ul li:hover{
+    background-color: #555;
+}
+.selected{
+    background-color: #555!important;
+}
+/**** Media Query ****/
+@media screen and (max-width: 700px){
+    .newsletter input{
+        width: 100%;
+        min-width: 200px;
+    }
+    .container-lg {
+        padding: 0;
+    }
+    #menu-icon{
+        display: block;
+    }
+    .menu-left{
+        display: flex;
+        flex-direction: row;
+        height: 50px;
+        align-items: center;
+        padding: 0 20px;
+        position: relative;
+    }
+    .menu-left .header-logo{
+        margin-left: 35%;
+    }
+    #menu{
+        display: none;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        background-color: #333;
+        flex-direction: column;
+        box-shadow: 1px 5px 5px rgba(0,0,0,.2);
+    }
+    #menu ul li{
+        width: 100%
+    }
+    .site-header{
+        display: block;
+    }
+    #slider-principal{
+        height: 300px;
+    }
+    .text-sm{
+        width: 100%;
+    }
+    #habilidades{
+        margin-left: 35%
+    }
+}
+
+/**** ANIMAÇÕES ****/
+@keyframes sombraAlternada{
+    0%{
+        text-shadow: 1px 1px 1px rgba(25,255,0,.2);
+    }
+    50%{
+        text-shadow: 1px 1px 20px rgba(25,255,0,.9);
+    }
+    100%{
+       text-shadow: 1px 1px 1px rgba(25,255,0,.2);
+    }
+}
+
+@keyframes showDown{
+   from{
+    opacity: 0;
+    margin-top: -500px;
+   }
+   to{
+    margin-top: 0;
+   }
+}
+
+@keyframes fade{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+ }
