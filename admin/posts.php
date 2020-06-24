@@ -62,7 +62,7 @@ if(isset($_GET['delete'])){
                     echo "<tr>";
                     echo "<td>".$post['titulo']."</td>";
                     echo "<td>".$post['user']."</td>";
-                    echo "<td>".$post['data']."</td>";
+                    echo "<td>".$post['date_log']."</td>";
 
                     echo ' <td class="project-actions text-right">';
                         echo '<a class="btn btn-info btn-sm" href="post_edit.php?id='.

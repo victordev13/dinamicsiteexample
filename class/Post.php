@@ -17,10 +17,14 @@ class Post{
         }
     }
 
-    public static function listar(){
+    public static function listar($limit = 0){
         $connect = conexao();
 
-        $sql = "SELECT * FROM posts";
+        if($limit != 0){
+            $sql = "SELECT * FROM posts LIMIT $limit";
+        }else{
+            $sql = "SELECT * FROM posts";
+        }
         
         $result = $connect->query($sql);
         
@@ -28,7 +32,6 @@ class Post{
             while($row = mysqli_fetch_assoc($result)){
                 $data[] = $row;
             }
-
            return $data;
         }else{
             echo "<script>alert('Ocorreu um ERRO, tente novamente!')</script>";
@@ -50,9 +53,10 @@ class Post{
     }
 
     public static function getpostById($id){
+
         $connect = conexao();
 
-        $sql = "SELECT id, titulo, descricao FROM posts WHERE id = $id";
+        $sql = "SELECT titulo, descricao, user, date_log data FROM posts WHERE id = $id";
         
         $result = $connect->query($sql);
         

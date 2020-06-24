@@ -1,11 +1,13 @@
 <?php
 
     require_once 'config.php';
+    $posts = Post::listar(3); 
 
     if(isset($_GET['sair'])){
         Usuario::logout();
+        unset($_SESSION);
     }
-    
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -25,10 +27,11 @@
         <ul id="menu">
             <a href="#"><li>Início</li></a>
             <a href="#sobre"><li>Sobre</li></a>
+            <a href="#blog"><li>Blog</li></a> 
             <a href="#servicos"><li>Serviços</li></a>
             <a href="#portfolio"><li>Portfólio</li></a>
             <a href="contato.php"><li>Contato</li></a>
-           <li class="non-hover"><a href="#"  id="btnModal" class="btn btn-white btn-sm">Login</a></li>
+           <li class="non-hover"><a href="#" id="btnModal" class="btn btn-white btn-sm" onclick="modalLogin()">Login</a></li>
         </ul>
     </header>
     <!--Principal-->
@@ -62,7 +65,7 @@
 
         <section id="slider-principal">
             <div class="container">
-                <h2>BEM VINDO!</h2><br>
+                <h2>BEM VINDO</h2><br>
                 <a href="#servicos" class="btn btn-lg btn-outline">Conheça nossos serviços</a>
             </div>
         </section>
@@ -91,26 +94,20 @@
                     <li>Analista de SEO</li>
                 </ul>
             </div>
-
         </section>
         <section class="container center" id="blog">
             <h3 class="title">Blog</h3><br>
             <div class="flex-col ajust-align">
-                <div class="box-post">
-                    <h3>teste div1</h3>
-                    <img src="img/img (11).jpg" alt="">
-                    <a href="blog/post1.html" class="btn btn-sm btn-dark">Ver Mais</a>
-                </div>
-                <div class="box-post">
-                    <h3>teste div2</h3>
-                    <img src="img/img (5).jpg" alt="">
-                    <a href="#" class="btn btn-sm btn-dark">Ver Mais</a>
-                </div>
-                <div class="box-post">
-                    <h3>teste div3</h3>
-                    <img src="img/img (4).jpg" alt="">
-                    <a href="#" class="btn btn-sm btn-dark">Ver Mais</a>
-                </div>
+                
+            <?php
+                foreach($posts as $key => $value){
+                    echo '<div class="box-post">';
+                    echo "<h3>{$value['titulo']}</h3>";
+                    echo '<img src="img/img (11).jpg" alt="">';
+                    echo "<a href='blog/post.php?id={$value['id']}' class='btn btn-sm btn-dark'>Ver Mais</a>";
+                    echo '</div>';
+                }
+            ?>
             </div>
         </section>
         <section class="container center" id="servicos">

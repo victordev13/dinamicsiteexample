@@ -184,6 +184,7 @@ section{
     line-height: 50px;
     animation: sombraAlternada 3s infinite;
     margin-bottom: 30px;
+    letter-spacing: 10px;
 }
 
 /**** Colunas Com Layout Flex****/
@@ -284,6 +285,23 @@ section{
     min-width: 220px;
     text-align: center;
     padding-top: 30px;
+}
+
+.post{
+    margin: 0 10vw;
+}
+
+.post h1{
+    margin-bottom: 50px;
+}
+
+.post p{
+    margin: 50px 0;
+}
+
+.post span{
+    color: #777;
+    font-size: 12pt;
 }
 
 /**** Icone menu mobile ****/
@@ -519,13 +537,13 @@ aside ul li:hover{
 /**** ANIMAÇÕES ****/
 @keyframes sombraAlternada{
     0%{
-        text-shadow: 1px 1px 1px rgba(25,255,0,.2);
+        opacity: 0;
     }
     50%{
-        text-shadow: 1px 1px 20px rgba(25,255,0,.9);
+        opacity: 100;
     }
     100%{
-       text-shadow: 1px 1px 1px rgba(25,255,0,.2);
+       opacity: 0;
     }
 }
 

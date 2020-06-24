@@ -1,3 +1,8 @@
+<?php
+    if(isset($_POST['enviar'])){
+        echo "<script>alert('E-mail enviado com sucesso')</script>";
+    }
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -16,36 +21,21 @@
         </div>
 
         <ul id="menu">
-            <a href="index.html"><li>Início</li></a>
-            <a href="index.html#sobre"><li>Sobre</li></a>
-            <a href="index.html#servicos"><li>Serviços</li></a>
-            <a href="index.html#portfolio"><li>Portfólio</li></a>
-            <a href="contato.html"><li>Contato</li></a>
+            <a href="index.php"><li>Início</li></a>
+            <a href="index.php#sobre"><li>Sobre</li></a>
+            <a href="index.php#blog"><li>Blog</li></a> 
+            <a href="index.php#servicos"><li>Serviços</li></a>
+            <a href="index.php#portfolio"><li>Portfólio</li></a>
+            <a href="contato.php"><li>Contato</li></a>
         </ul>
     </header>
     <!--Principal-->
     <main>
-        <div id="bg-modal" class="bg-modal">
-            <div id="modal" class="modal login">
-                <div class="modal-header">
-                    <i id="close">&times</i>
-                </div>
-                <div class="modal-body">
-                    <h3>Acessar</h3><br>
-                    <form>
-                        <input type="text" name="" placeholder="Usuário" required="">
-                        <input type="password" name="" placeholder="Senha" required=""><br>
-                        <input type="submit" class="btn btn-lg btn-blue btn-fill" name="" value="Login">
-                    </form>                    
-                </div>
-                <div class="modal-footer"></div>
-            </div>
-        </div>
-       
+
         <section class="container">
             <div class="form-contato">
                 <h3 class="title">Envie uma mensagem</h3><br><br>
-                <form>
+                <form method="POST">
                     <input type="text" name="nome" placeholder="Nome Completo" required="">
                     <input type="email" name="email" placeholder="E-mail" required="">
                     <input type="text" name="assunto" placeholder="Assunto" required="">
