@@ -28,12 +28,13 @@ class Post{
         
         $result = $connect->query($sql);
         
-        if($result){
+        if($result->num_rows > 0){
             while($row = mysqli_fetch_assoc($result)){
                 $data[] = $row;
             }
            return $data;
         }else{
+            return $data = [];
             echo "<script>alert('Ocorreu um ERRO, tente novamente!')</script>";
         }
     }

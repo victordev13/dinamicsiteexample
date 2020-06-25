@@ -1,11 +1,22 @@
 <?php
 require_once 'inc/header.php';
 
-if(isset($_POST['adicionar'])){
-  $link = addslashes($_POST['link']);
-  $imagem = addslashes($_POST['imagem']);
-  $item = new PortfolioItem($link, $imagem);
+if(isset($_GET['id'])){
+    $id = intval($_GET['id']);
+    $data = PortfolioItem::getItemPortfolio($id);
+
+    if(isset($_POST['atualizar'])){
+        $link = addslashes($_POST['link']);
+        $imagem = addslashes($_POST['imagem']);
+        PortfolioItem::update($id, $link, $imagem);
+        $data = PortfolioItem::getItemPortfolio($id);
+    }
+
+}else{
+    $data =[];
 }
+
+
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -30,7 +41,7 @@ if(isset($_POST['adicionar'])){
             <!-- jquery validation -->
             <div class="card card-default">
               <div class="card-header">
-                <h3 class="card-title">Adicionar novo item</h3>
+                <h3 class="card-title">Editar item</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -38,11 +49,11 @@ if(isset($_POST['adicionar'])){
                 <div class="card-body">
                   <div class="form-group">
                     <label for="link">URL</label>
-                    <input type="text" name="link" class="form-control" id="link" placeholder="Link do projeto" required>
+                    <input type="text" name="link" class="form-control" id="link" placeholder="Link do projeto" required  value="<?php echo isset($data['link'])?$data['link']:"" ?>">
                   </div>
                   <div class="form-group">
                     <label for="imagem">Imagem</label>
-                    <input type="text" name="imagem" id="imagem" class="form-control" placeholder="Link da imagem" onkeyup="imgPreview()" required>
+                    <input type="text" name="imagem" id="imagem" class="form-control" placeholder="Link da imagem" onkeyup="imgPreview()" required  value="<?php echo isset($data['imagem'])?$data['imagem']:"" ?>">
                   </div>
                   <label>Imagem Preview</label>
                   <div class="form-group" id="div-preview" style="border: solid 1px #ddd; padding: 20px 50px;height: 300px; width: 400px; display: none">
@@ -51,7 +62,7 @@ if(isset($_POST['adicionar'])){
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary" name="adicionar">Adicionar</button>
+                  <button type="submit" class="btn btn-primary" name="atualizar">Atualizar</button>
                 </div>
               </form>
             </div>

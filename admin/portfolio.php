@@ -1,7 +1,13 @@
 <?php require_once 'inc/header.php'; 
 
-$posts = Portfolioitem::listar(); 
+$portfolio = PortfolioItem::listar(); 
 
+if(isset($_GET['delete'])){
+    $id = intval($_GET['delete']);
+    PortfolioItem::delete($id);
+    $portfolio = PortfolioItem::listar(); 
+
+}
 ?>
 <div class="content-wrapper">
 <section class="content-header">
@@ -10,7 +16,7 @@ $posts = Portfolioitem::listar();
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Portfolio</h1>
+            <h1 class="m-0 text-dark">Blog</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -21,7 +27,8 @@ $posts = Portfolioitem::listar();
 <!-- Default box -->
 <div class="card">
   <div class="card-header">
-    <h3 class="card-title">Itens</h3>
+    <h3 class="card-title">Portfólio</h3>
+
     <div class="card-tools">
       <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
         <i class="fas fa-minus"></i></button>
@@ -34,15 +41,15 @@ $posts = Portfolioitem::listar();
         <thead>
             <tr>
                 <th style="width: 20%">
-                    Título
+                    Link
                 </th>
                 <th>
-                    Usuário
+                    Imagem
                 </th>
                 <th>
                     Data de criação
                 </th>
-                <th style="width: 50%">
+                <th style="width: 20%">
                 </th>
             </tr>
         </thead>
@@ -50,25 +57,28 @@ $posts = Portfolioitem::listar();
             <tr>
 
                 <?php
-                
-                foreach($posts as $post){
+                if(count($portfolio) > 0){
+  
+                  foreach($portfolio as $item){
                     echo "<tr>";
-                    echo "<td>".$post['titulo']."</td>";
-                    echo "<td>".$post['user']."</td>";
-                    echo "<td>".$post['data']."</td>";
+                    echo "<td>".$item['link']."</td>";
+                    echo "<td>".$item['imagem']."</td>";
+                    echo "<td>".$item['date_log']."</td>";
 
                     echo ' <td class="project-actions text-right">';
-                        echo '<a class="btn btn-info btn-sm" href="post_edit.php?id='.
-                        $post["id"].
+                        echo '<a class="btn btn-info btn-sm" href="portfolio_edit.php?id='.
+                        $item["id"].
                         '">
                         <i class="fas fa-pencil-alt"></i>Editar</a> ';
                         echo '<a class="btn btn-danger btn-sm" href="?delete='.
-                        $post["id"].
+                        $item["id"].
                         '">
                         <i class="fas fa-trash"></i>Excluir</a>';
                     echo '</td>';
                     echo "</tr>";
+                  }
                 }
+                
                 
                 ?>
                 
@@ -80,23 +90,5 @@ $posts = Portfolioitem::listar();
 </section>
 </div>
 
-<?php
-    if(isset($_GET['delete'])){
-        $id = intval($_GET['delete']);
-        
-    }
-
-?>
-<td>
-                    <a>
-                        AdminLTE v3
-                    </a>
-                </td>
-                <td>
-                    admin
-                </td>
-                <td>
-                    00/00/000
-                </td>
 
 <?php require_once 'inc/footer.php'; ?>
