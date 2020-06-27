@@ -2,7 +2,7 @@
 const HOSTNAME = "127.0.0.1:3307";
 const USERNAME = "root";
 const PASSWORD = "";
-const DBNAME = "sitedinamico";
+const DBNAME = "victor_site";
 
 function conexao()
 {

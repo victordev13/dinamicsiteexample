@@ -2,6 +2,7 @@
 
     require_once 'config.php';
     $posts = Post::listar(3); 
+    $itensPortfolio = PortfolioItem::listar(6);
 
     if(isset($_GET['sair'])){
         Usuario::logout();
@@ -131,48 +132,21 @@
                     <p>Desenvolvimento</p>
                 </div>
             </div><br><br>
-            <a href="contato.html" class="btn btn-blue btn-me">Solicite um orçamento</a>
+            <a href="contato.php" class="btn btn-blue btn-me">Solicite um orçamento</a>
         </section>
         <section class="container center" id="portfolio">
             <h3 class="title">Portfólio</h3>
             <div class="flex-col ajust-align">
-                <!-- exemplos -->
-                <figure class="box-img">
-                    <a href="">
-                        <img src="img/img (4).jpg" alt="">
-                        <figcaption>exemplo.com</figcaption>
-                    </a>
-                </figure>
-                <figure class="box-img">
-                    <a href="">
-                        <img src="img/img (9).jpg" alt="">
-                        <figcaption>exemplo1.com.br</figcaption>
-                    </a>
-                </figure>
-                <figure class="box-img">
-                    <a href="">
-                        <img src="img/img (7).jpg" alt="">
-                        <figcaption>exemplo3.com.br</figcaption>
-                    </a>
-                </figure>
-                <figure class="box-img">
-                    <a href="">
-                        <img src="img/img (5).jpg" alt="">
-                        <figcaption>exemplo4.net</figcaption>
-                    </a>
-                </figure>
-                <figure class="box-img">
-                    <a href="">
-                        <img src="img/img (11).jpg" alt="">
-                        <figcaption>exemplo5.br</figcaption>
-                    </a>
-                </figure>
-                <figure class="box-img">
-                    <a href="">
-                        <img src="img/img (3).jpg" alt="">
-                        <figcaption>exemplo6.com.br</figcaption>
-                    </a>
-                </figure>
+
+                <?php
+                foreach($itensPortfolio as $key => $value){
+                    echo '<figure class="box-img">';
+                        echo "<img src='{$value['imagem']}'>";
+                        echo "<figcaption>{$value['link']}</figcaption>";
+                    echo '</figure>';
+                }
+            ?>
+
             </div>
         </section>
 

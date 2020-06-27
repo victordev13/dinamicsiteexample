@@ -17,7 +17,7 @@
    <header class="site-header container-lg">
         <div class="menu-left">
             <span id="menu-icon" href="#" onclick="showMenu()">|||</span>
-            <a href="index.html" style="font-size: 14pt;color:white;" class="header-logo">_victorDEV</a>
+            <a href="index.php" style="font-size: 14pt;color:white;" class="header-logo">_victorDEV</a>
         </div>
 
         <ul id="menu">
