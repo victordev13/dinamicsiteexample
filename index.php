@@ -162,7 +162,7 @@
 
     <footer>
         <div class="bottom">
-            <a href="contato.html">Developed by <span>victor</span> &copy</a>
+            <a href="contato.php">Developed by <span>victor</span> &copy</a>
         </div>
     </footer>
     <script src="js/script.js"></script>
